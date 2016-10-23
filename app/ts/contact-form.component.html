@@ -1,0 +1,30 @@
+<h2>Contact Us</h2>
+<div id="contact">
+<form [ngFormModel]="studentForm" class="form-horizontal" id='myForm' role="form">
+  
+    <div class="col-md-7">
+       First Name: <input ngControl="firstname" #firstname="ngForm" [(ngModel)]="user.firstname" type="text" placeholder="firstname" class="form-control">
+       <span [hidden]="firstname.valid"><b>Required</b></span>
+    </div>
+	<div class="col-md-7">
+       Last Name: <input ngControl="lastname" #name="ngForm" [(ngModel)]="user.lastname" type="text" placeholder="lastname" class="form-control">
+       <span [hidden]="lastname.valid"><b>Required</b></span>
+    </div>
+    <div class="col-md-7">
+       Password: <input ngControl="password" #password="ngForm" [(ngModel)]="user.password" type="text" id="password" placeholder="password" class="form-control">
+       <span [hidden]="!password.control.hasError('required')"><b>Required</b></span>
+       <span [hidden]="!password.control.hasError('startsWithNumber')"><b>Must start with number</b></span>
+    </div>
+	
+	<div class="col-md-7">
+       Email: <input ngControl="email" #email="ngForm" [(ngModel)]="user.email" type="text" id="email" placeholder="email" class="form-control">
+       <span [hidden]="!email.control.hasError('required')"><b>Required</b></span>
+    </div>
+
+</form>
+</div>
+<br />
+Valid: {{studentForm.valid }} <br />
+<br />
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<button type="button" (click)="addNewGroup(user)" class="btn btn-primary btn-lg" data-dismiss="modal">&nbsp;&nbsp;&nbsp; Submit &nbsp;&nbsp;&nbsp;</button>
